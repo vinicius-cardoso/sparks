@@ -1,0 +1,5 @@
+(design_block_lib_table
+	(version 7)
+	(lib (name "ESP32-C3-SuperMini.pretty") (type "KiCad") (uri "${KIPRJMOD}/../libraries/ESP32-C3-SuperMini.pretty") (options "") (descr ""))
+	(lib (name "TP4056-Breakout.pretty") (type "KiCad") (uri "${KIPRJMOD}/../libraries/TP4056-Breakout.pretty") (options "") (descr ""))
+)
