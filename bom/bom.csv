@@ -1,0 +1,20 @@
+ref,qty,part,value,package,role,status,notes
+U1,1,ESP32-C3 Supermini,,module,MCU — all timing/decoding/radio control,have,13 GPIO broken out (0-10 20 21); 3.3V native
+U2,1,MAX7219,,DIP-24 or SOIC-24,LED driver — constant current 3-wire,to buy,5V part; see docs/hardware.md logic-level note
+U3,1,CC1101 module V2.0,433 MHz,module + SMA socket,RF transceiver,have,phase 2; SMA variant with detachable whip. Footprint present but unpopulated in phase 1
+D1-D26,26,SMD LED white,,0805,one per letter of the Morse tree,to buy,ALL WHITE — single Vf so one RSET suits every LED. Buy from one reel/batch for uniformity. Note white Vf is ~2.8-3.4V — check MAX7219 supply headroom.
+R1,1,Resistor,~10k,0805,RSET — sets LED current for ALL 26 LEDs,to buy,exact value depends on LED Vf and target brightness
+R2,1,Resistor,,0805,battery divider high side,to buy,size for negligible quiescent current
+R3,1,Resistor,,0805,battery divider low side,to buy,
+C1,1,Capacitor,100nF,0805,MAX7219 decoupling,to buy,place close to the IC
+C2,1,Capacitor,10uF,0805,MAX7219 bulk,to buy,
+C3,1,Capacitor,100nF,0805,ESP32-C3 decoupling,to buy,
+SW1,1,Momentary switch,,through-hole,Morse key,have,active low with INPUT_PULLUP; consider external key jack
+SW2,1,Slide switch,,SMD,power on/off,to buy,
+BZ1,1,Buzzer,,SMD or TH,sidetone — hear what you send,to buy,magnetic buzzer needs a drive transistor; piezo can be driven direct
+BT1,1,Li-ion cell,,18650 or pouch,power,to buy,capacity pending current estimate
+M1,1,TP4056 module,,module,charging + protection,to buy,get the version WITH protection IC
+J1,1,Antenna whip,433 MHz,SMA male stub,RF,have,ships with the module; screws onto the board SMA socket. Detachable — case needs an opening. Never key the radio without it or a dummy load.
+,1,Level shifter,,SOT-23 / module,3.3V to 5V for MAX7219 DIN/CLK/LOAD,conditional,only if running MAX7219 at 5V — see docs/hardware.md
+,1,PCB,,,main board,to make,fiber-laser engraved copper
+,1,Enclosure,,,case,to make,Onshape; exports to mechanical/
