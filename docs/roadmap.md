@@ -13,7 +13,9 @@ still undecided stay off the critical path.
 - [x] Estimate worst-case current → see `docs/hardware.md` § Power budget.
       Trainer ~139 mA, TX ~194 mA worst case; any cell ≥1000 mAh is comfortable.
 - [ ] Decide MAX7219 supply voltage → level shifter required or not.
-- [ ] Confirm minimum trace/space the fiber laser holds → MAX7219 package choice.
+- [x] MAX7219 package → **DIP-24**, chosen for hand-soldering ease. 2.54 mm pitch
+      is within any fiber laser's capability, so the minimum trace/space question
+      no longer blocks the design.
 
 ## Phase 1 — breadboard the panel
 

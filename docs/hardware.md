@@ -59,8 +59,13 @@ Two fixes, both cheap:
 
 Option 2 is fewer parts; option 1 is more robust. Decide with the board in hand.
 
-The **IS31FL3731** avoids the question entirely (native 3.3 V, I²C, constant
-current, same part count) and is the fallback if the MAX7219 proves troublesome.
+The **IS31FL3731** would avoid the question entirely (native 3.3 V, I²C, constant
+current, same part count) — but it is SMD-only and effectively import-only in
+Brazil, so it is **not** a practical fallback here. If the MAX7219 proves
+troublesome at 3.3 V, add the level shifter rather than changing driver.
+
+A suitable shifter is the **TXS0108E** or a **BSS138**-based 4-channel breakout —
+both sold locally as ready-made modules.
 
 ## LED addressing map
 
@@ -107,6 +112,84 @@ DIG4/SEG7 are the four non-English letters — left unpopulated.
 
 Three DIG lines remain free, so status LEDs (power, TX, charge) can be added later
 with no driver change.
+
+## KiCad reference
+
+Verified against the KiCad 10.0.5 stock libraries.
+
+### Symbols available
+
+| Part | Library | Symbol |
+|---|---|---|
+| MAX7219 | `Driver_LED` | `MAX7219` |
+| Battery cell | `Device` | `Battery_Cell` |
+| LED / resistor / capacitor | `Device` | `LED` / `R` / `C` |
+
+### Symbols NOT in the stock libraries
+
+These are all boards mounted on headers rather than bare chips, so represent each
+with a `Connector_Generic:Conn_01x0N` sized to its pin count:
+
+- **ESP32-C3 Supermini** — stock libs carry only the bare die and the WROOM
+  modules, not this board. Two 8-pin headers match its layout.
+- **CC1101 module** — no symbol. 8 pins → `Conn_01x08`.
+- **TP4056** — no symbol. `Battery_Management` contains **TP4057**, which is a
+  *different part* — do not substitute it.
+
+### Footprints
+
+| Part | Footprint |
+|---|---|
+| MAX7219 | `Package_DIP:DIP-24_W7.62mm` |
+| White LEDs (×26) | `LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder` |
+| Resistors / caps | `Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder` |
+
+Two things to get right:
+
+- Use **`W7.62mm`** (300 mil narrow body), *not* the `W15.24mm` variants — those
+  are a physically different package.
+- Prefer the **`_HandSolder`** variants throughout; their pads are slightly
+  extended for manual soldering.
+
+### MAX7219 pinout, and a naming trap
+
+The symbol names the segment outputs `SEG_A`…`SEG_G` plus `SEG_DP`, because the
+chip was designed for seven-segment displays. For Sparks they are just eight
+generic outputs. Mapping to the addressing table above:
+
+| Table | Symbol pin | Pin № |
+|---|---|---|
+| SEG0 | `SEG_A` | 14 |
+| SEG1 | `SEG_B` | 16 |
+| SEG2 | `SEG_C` | 20 |
+| SEG3 | `SEG_D` | 23 |
+| SEG4 | `SEG_E` | 21 |
+| SEG5 | `SEG_F` | 15 |
+| SEG6 | `SEG_G` | 17 |
+| SEG7 | `SEG_DP` | 22 |
+
+`DIG_0`…`DIG_7` map directly; Sparks uses DIG_0–DIG_4.
+
+**Pin 18 is `ISET`** — this is `RSET` elsewhere in these notes. It connects to
+**V+**, not to ground.
+
+### Connections
+
+```
+ESP32-C3           MAX7219
+GPIO5  ──────────▶ DIN   (pin 1)
+GPIO6  ──────────▶ CLK   (pin 13)
+GPIO7  ──────────▶ LOAD  (pin 12)
+                   ISET  (pin 18) ──[RSET]── V+
+                   V+    (pin 19) ── 5 V
+                   GND   (pins 4 AND 9)
+```
+
+LED **anodes → SEG** pins, **cathodes → DIG** pins.
+
+> [!WARNING]
+> Connect **both** ground pins (4 and 9). Leaving one floating is a common
+> omission and causes erratic, hard-to-diagnose behaviour.
 
 ## Panel layout and engraving
 
@@ -239,5 +322,13 @@ Copper engraved with a fiber laser. Relevant consequences:
 
 - Trace count matters more than usual — every trace is engraving time and a
   potential defect. The MAX7219 keeps this to ~16 panel traces.
-- Check minimum trace/space achievable on the laser before committing to the
-  MAX7219's 24-pin package pitch (DIP is far more forgiving than SOIC here).
+- **MAX7219 package: DIP-24**, chosen for soldering ease. Pin pitch is 2.54 mm
+  against SOIC-24's 1.27 mm, the pads are large, and through-hole joints are
+  soldered from the underside with room to work — solder bridges are very hard to
+  create. This also sidesteps needing to characterise the laser's minimum
+  trace/space, since 2.54 mm is comfortable for any fiber laser.
+- Cost: the DIP body is ~32 × 8 mm and needs 24 drilled holes. Acceptable here
+  because the 26-LED tree already sets the board size, not the driver IC.
+- The **LEDs remain SMD** (0805). They are simple two-pad parts — much easier than
+  a fine-pitch IC — and SMD keeps them flush against the panel surface, which
+  matters for how the engraved tree reads.
