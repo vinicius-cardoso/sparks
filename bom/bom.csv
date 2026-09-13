@@ -13,8 +13,8 @@ C3,1,Capacitor,100nF,0805,ESP32-C3 decoupling,to buy,
 SW1,1,Tactile switch 6x6mm,,"SW_PUSH_6mm (THT, 4-pin)",Morse key,to buy,classic 6x6 tact switch; 4 pins but only 2 nets. Pick _H5mm variant if button height matters for the case
 SW2,1,Slide switch,,SMD,power on/off,to buy,
 BZ1,1,Magnetic buzzer 12mm,,Buzzer_12x9.5RM7.6 (THT),sidetone — hear what you send,to buy,"12mm dia, 9.5mm tall, 7.6mm pin pitch. ACTIVE buzzer = fixed tone; PASSIVE needed for tone() sidetone — see docs"
-BT1,1,LiPo pouch 102050,3.7V 1000mAh,SolderWire 1x02 P3.7mm (flying leads),power,to buy,"10x20x50mm, 1000mAh = ~7h trainer / ~5h TX. Flying leads soldered to pads; use _Relief variant for strain relief"
-M1,1,TP4056 module,,module,charging + protection,to buy,get the version WITH protection IC
+BT1,1,LiPo pouch 102050,3.7V 1000mAh,SolderWire 1x02 P3.7mm (flying leads),power,to buy,"10x20x50mm, 1000mAh = ~5h trainer / ~3.5h TX via boost (boost draws ~190mA from cell for 139mA at 5V). Flying leads soldered to pads; use _Relief variant for strain relief"
+M1,1,HW-357 TP4056+MT3608 module,5V out,module w/ micro-USB,charging + protection + 5V boost,have,combo board: TP4056 charger + MT3608 boost. Charge via its own micro-USB; IN+/IN- unused. SET TRIMMER TO 5.0V BEFORE CONNECTING - ships uncalibrated
 J1,1,Antenna whip,433 MHz,SMA male stub,RF,have,ships with the module; screws onto the board SMA socket. Detachable — case needs an opening. Never key the radio without it or a dummy load.
 ,1,Level shifter TXS0108E or BSS138,,breakout module,3.3V to 5V for MAX7219 DIN/CLK/LOAD,conditional,only if running MAX7219 at 5V — see docs/hardware.md. Both sold as modules in BR
 ,1,PCB,,,main board,to make,fiber-laser engraved copper

@@ -45,6 +45,33 @@ leaves room for an I²C peripheral later.
 Pin numbers above are a starting proposal — adjust during KiCad layout if routing
 prefers a different assignment. Only the CC1101 SPI grouping is semi-fixed.
 
+## Power supply — resolved
+
+The board is powered by an **HW-357** combo module: a TP4056 charger and an
+MT3608 boost converter on one board, with its own micro-USB socket.
+
+| Module pad | Connects to |
+|---|---|
+| BAT+ / BAT− | the 102050 LiPo cell |
+| OUT+ / OUT− | the `+5V` / `GND` nets |
+| IN+ / IN− | **unused** — charging goes through the module's own micro-USB |
+
+This settles the supply question. `+5V` is now a genuine regulated 5 V rather
+than raw cell voltage, so the MAX7219 has proper headroom above the white LEDs'
+~3.4 V forward drop and the panel stays at constant brightness as the battery
+drains.
+
+> [!IMPORTANT]
+> The MT3608's output is set by a **trimmer potentiometer** and these boards do
+> **not** ship pre-calibrated — some arrive at 10 V or higher. Set it to exactly
+> 5.0 V with a multimeter, on its own, **before** connecting it to anything.
+> Applying an uncalibrated output to the ESP32-C3 and MAX7219 would destroy both.
+
+**Cost in runtime:** a boost converter draws more current than it supplies, since
+it trades voltage for current. Delivering 139 mA at 5 V pulls roughly 190 mA from
+a 3.7 V cell, so the 1000 mAh pack gives about 5 hours in trainer mode rather
+than 7. The trade buys a panel that stays bright instead of fading.
+
 ## MAX7219 logic level — unresolved
 
 The MAX7219 runs at 5 V and specifies `V_IH` ≈ 3.5 V. An ESP32-C3 drives 3.3 V,
