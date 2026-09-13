@@ -10017,6 +10017,106 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector_Generic:Conn_02x04_Odd_Even")
+		(at 196.85 59.69 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bf2a3103-af58-44ba-b76f-745a318f3314")
+		(property "Reference" "J1"
+			(at 190.246 57.912 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "Conn_02x04_Odd_Even"
+			(at 204.47 59.6899 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x04_P2.54mm_Vertical"
+			(at 196.85 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 196.85 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, double row, 02x04, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 196.85 59.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "42247b9f-81a8-4abb-a1d1-ff27908735a1")
+		)
+		(pin "1"
+			(uuid "99e5128b-b40c-410d-a272-969c57426124")
+		)
+		(pin "5"
+			(uuid "9b117406-0d81-4f3f-9274-bfaf7904a8d8")
+		)
+		(pin "8"
+			(uuid "25f3084f-c9f3-440f-8c7b-c16aa97cdeaf")
+		)
+		(pin "4"
+			(uuid "62dd2053-7cea-44aa-8d4a-d5c3981ba7a0")
+		)
+		(pin "7"
+			(uuid "d6777fc3-6e19-4a9f-b1e6-185417445c6a")
+		)
+		(pin "3"
+			(uuid "0895076b-b8cb-48ed-bb29-6d213a43ad70")
+		)
+		(pin "6"
+			(uuid "10e6ccd8-65f4-47b8-9b32-c16627a97d63")
+		)
+		(instances
+			(project "sparks"
+				(path "/b32579de-9b7d-4099-823e-c649101f67ab"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:LED")
 		(at 31.75 127 180)
 		(unit 1)
@@ -10625,106 +10725,6 @@
 			(project "sparks"
 				(path "/b32579de-9b7d-4099-823e-c649101f67ab"
 					(reference "SW1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_02x04_Odd_Even")
-		(at 196.85 59.69 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "e0f98742-b45b-463b-8bbf-5d0a23c9b308")
-		(property "Reference" "J1"
-			(at 189.992 58.42 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "Conn_02x04_Odd_Even"
-			(at 204.47 59.6899 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Sparks:CC1101_Socket_2x04"
-			(at 196.85 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 196.85 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Generic connector, double row, 02x04, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 196.85 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "7"
-			(uuid "49d1a056-8042-40ae-9522-d2521b09c4eb")
-		)
-		(pin "6"
-			(uuid "538e22d7-a017-4b7b-8a60-ed353846089a")
-		)
-		(pin "8"
-			(uuid "e9a91858-ac6a-4dad-adc9-cebdd3e21db4")
-		)
-		(pin "5"
-			(uuid "d18a511c-8cfc-4c51-ac94-4d673d63f89e")
-		)
-		(pin "3"
-			(uuid "3a101246-6351-417a-a174-0892fa669533")
-		)
-		(pin "4"
-			(uuid "f36d8439-1adb-4ae2-bb83-a1d90db0118d")
-		)
-		(pin "2"
-			(uuid "3c9dc8ac-daf6-427c-809b-19028d200a61")
-		)
-		(pin "1"
-			(uuid "c613b4b2-3147-4661-a26d-aaf706d8cb6e")
-		)
-		(instances
-			(project "sparks"
-				(path "/b32579de-9b7d-4099-823e-c649101f67ab"
-					(reference "J1")
 					(unit 1)
 				)
 			)
