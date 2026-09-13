@@ -8565,8 +8565,7 @@
 				)
 			)
 		)
-		(pad "1" thru_hole rect
-			(at 0 0 270)
+		(pad "1" thru_hole rect (at 0 2.54)
 			(size 1.7 1.7)
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
@@ -8576,8 +8575,7 @@
 			(pintype "passive")
 			(uuid "93e68cd0-71d4-47d5-9293-26178aaeb190")
 		)
-		(pad "2" thru_hole circle
-			(at -2.54 0 270)
+		(pad "2" thru_hole circle (at 0 0)
 			(size 1.7 1.7)
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
@@ -8587,8 +8585,7 @@
 			(pintype "passive")
 			(uuid "2a310867-92ee-4935-a11d-06fee9339b6f")
 		)
-		(pad "3" thru_hole circle
-			(at 0 2.54 270)
+		(pad "3" thru_hole circle (at 2.54 2.54)
 			(size 1.7 1.7)
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
@@ -8598,8 +8595,7 @@
 			(pintype "passive")
 			(uuid "a268076a-fd57-4453-b053-193863663495")
 		)
-		(pad "4" thru_hole circle
-			(at -2.54 2.54 270)
+		(pad "4" thru_hole circle (at 2.54 0)
 			(size 1.7 1.7)
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
@@ -8609,8 +8605,7 @@
 			(pintype "passive")
 			(uuid "c8fc9a6b-2f31-4791-9d8f-4ff51d134c8a")
 		)
-		(pad "5" thru_hole circle
-			(at 0 5.08 270)
+		(pad "5" thru_hole circle (at 5.08 2.54)
 			(size 1.7 1.7)
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
@@ -8620,8 +8615,7 @@
 			(pintype "passive")
 			(uuid "53a69a4c-f2b3-46ee-8634-b1b26b3ad44d")
 		)
-		(pad "6" thru_hole circle
-			(at -2.54 5.08 270)
+		(pad "6" thru_hole circle (at 5.08 0)
 			(size 1.7 1.7)
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
@@ -8631,8 +8625,7 @@
 			(pintype "passive")
 			(uuid "754114c9-ba58-4270-a1a2-5cb427a97523")
 		)
-		(pad "7" thru_hole circle
-			(at 0 7.62 270)
+		(pad "7" thru_hole circle (at 7.62 2.54)
 			(size 1.7 1.7)
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
@@ -8642,8 +8635,7 @@
 			(pintype "passive")
 			(uuid "a43db4fc-9f45-4e4b-8457-ba87f407e986")
 		)
-		(pad "8" thru_hole circle
-			(at -2.54 7.62 270)
+		(pad "8" thru_hole circle (at 7.62 0)
 			(size 1.7 1.7)
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
