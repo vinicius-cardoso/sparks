@@ -155,6 +155,38 @@ usual fix. See `docs/hardware.md`.
 **Safety:** never key the transmitter with the whip unscrewed — power reflects back
 into the PA. Use a 50 Ω dummy load for bench testing.
 
+## 8. The panel needs a double-sided board
+
+**Finding.** Routing the 26-LED matrix on a single layer requires roughly **56
+jumper wires**, measured by taking each net's minimum spanning tree and counting
+straight-line crossings between nets.
+
+**Why.** The matrix is organised by tree *level* — DIG0 is level 1, DIG3 holds
+six of the level-4 letters — while the panel is organised by tree *geometry*,
+where those same six letters (J, P, F, L, V, H) sit scattered across four rows on
+opposite sides of the board. The electrical grouping and the visual arrangement
+are different organisations of the same 26 parts, and they do not reconcile on
+one layer.
+
+Total net length is about 823 mm across 13 nets.
+
+**Decision:** route double-sided. DIG nets on the back under the panel, SEG nets
+on the front between the LEDs, crossings resolved with vias rather than soldered
+jumpers. The MAX7219 mounts on the back, centred beneath the panel, which also
+shortens its 16 traces.
+
+**Rejected:** single-sided with jumpers — 25-30 hand-soldered wires even after
+optimisation, on the visible face of a handheld device. Rejected on both build
+effort and appearance.
+
+**Also rejected:** rearranging the panel so electrical rows match visual rows.
+That would route trivially on one layer but abandons the tree shape, which is the
+device's entire purpose.
+
+**Consequence for fabrication:** the fiber laser must etch both faces with
+registration between them. Add alignment holes to the board outline before
+etching.
+
 ## Open items
 
 - **MAX7219 at 3.3 V.** The chip is a 5 V part wanting ~3.5 V for a logic high.

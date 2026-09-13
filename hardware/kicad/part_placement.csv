@@ -1,0 +1,14 @@
+ref,x_mm,y_mm,rot,layer,note
+U1,150.0,120.0,0,back,"MAX7219 on back, centred under panel"
+R1,128.0,112.0,0,back,"RSET, back"
+C1,128.0,115.0,0,back,"100nF MAX7219, back"
+C2,128.0,118.0,0,back,"10uF bulk, back"
+J1,150.0,150.0,0,front,CC1101 socket
+BZ1,125.0,150.0,0,front,buzzer
+BT1,178.0,149.0,0,front,battery pads
+R2,178.0,154.0,0,front,battery divider
+R3,178.0,157.0,0,front,battery divider
+U2,130.0,172.0,0,front,ESP32-C3
+J2,167.0,168.0,0,front,HW-357 power module
+SW1,150.0,181.0,0,front,Morse key
+C3,146.0,161.0,0,front,100nF ESP32
