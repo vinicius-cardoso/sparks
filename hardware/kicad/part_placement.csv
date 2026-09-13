@@ -1,5 +1,5 @@
 ref,x_mm,y_mm,rot,layer,note
-J1,150.0,98.0,0,front,CC1101 socket at TOP edge - antenna away from user
+J1,150.0,100.0,0,front,"CC1101 socket AT TOP EDGE - module plugs in and overhangs the board, antenna beyond"
 U1,150.0,129.0,0,back,"MAX7219 on back, centred under panel"
 R1,132.0,156.0,0,back,"RSET, back"
 C1,135.0,156.0,0,back,"100nF MAX7219, back"

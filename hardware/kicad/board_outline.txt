@@ -1,1 +1,6 @@
-Edge.Cuts rectangle: (119, 90) to (185, 196)  = 66 x 106 mm
+Edge.Cuts rectangle: (119, 95) to (185, 196)  = 66 x 101 mm
+
+CC1101: socket J1 sits at (150,100), just inside the top edge (y=95).
+The module plugs in and overhangs the board completely - body and antenna
+extend past y=95 away from the user. The board carries only the socket.
+The case should brace the module, since it is held solely by its 8 pins.
