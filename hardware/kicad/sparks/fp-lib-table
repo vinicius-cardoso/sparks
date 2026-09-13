@@ -2,4 +2,5 @@
 	(version 7)
 	(lib (name "ESP32-C3-SuperMini")(type "KiCad")(uri "${KIPRJMOD}/../libraries/ESP32-C3-SuperMini.pretty")(options "")(descr "ESP32-C3 SuperMini module footprint"))
 	(lib (name "TP4056-Breakout")(type "KiCad")(uri "${KIPRJMOD}/../libraries/TP4056-Breakout.pretty")(options "")(descr "TP4056 charger module footprint"))
+	(lib (name "Sparks")(type "KiCad")(uri "${KIPRJMOD}/../libraries/Sparks.pretty")(options "")(descr "Sparks project-specific footprints"))
 )

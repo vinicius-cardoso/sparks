@@ -10664,7 +10664,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_2x04_P2.54mm_Vertical"
+		(property "Footprint" "Sparks:CC1101_Socket_2x04"
 			(at 196.85 59.69 0)
 			(hide yes)
 			(show_name no)
