@@ -1,4 +1,4 @@
-(footprint "TP4056_breakout"
+(footprint "TP4056-Breakout"
 	(version 20260206)
 	(generator "pcbnew")
 	(generator_version "10.0")

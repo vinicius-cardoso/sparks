@@ -1,18 +1,19 @@
 ref,qty,part,value,package,role,status,notes
 U1,1,ESP32-C3 Supermini,,module,MCU — all timing/decoding/radio control,have,13 GPIO broken out (0-10 20 21); 3.3V native
 U2,1,MAX7219,,DIP-24,LED driver — constant current 3-wire,to buy,DIP chosen for hand-soldering: 2.54mm pitch vs 1.27mm SOIC. 5V part; see docs/hardware.md logic-level note
-U3,1,CC1101 module V2.0,433 MHz,module + SMA socket,RF transceiver,have,phase 2; SMA variant with detachable whip. Footprint present but unpopulated in phase 1
+U3,1,CC1101 module V2.0,433 MHz,module + SMA socket,RF transceiver,have,phase 2; SMA variant with detachable whip. SOCKETED not soldered — plugs into J2 when radio is in use
+J2,1,Pin socket 2x4 female,2.54mm,PinSocket_2x04_P2.54mm_Vertical,CC1101 module socket,to buy,female socket on the PCB; module's male pins plug in. Symbol: Conn_02x04_Odd_Even (generic — no dedicated CC1101 symbol needed)
 D1-D26,26,SMD LED white,,0805,one per letter of the Morse tree,to buy,ALL WHITE — single Vf so one RSET suits every LED. BUY EXTRA (40-50) FROM ONE SELLER/LOT — mixed bins show as uneven brightness side by side. White Vf ~2.8-3.4V — check MAX7219 headroom.
 R1,1,Resistor,~10k,0805,RSET — sets LED current for ALL 26 LEDs,to buy,exact value depends on LED Vf and target brightness
-R2,1,Resistor,,0805,battery divider high side,to buy,size for negligible quiescent current
-R3,1,Resistor,,0805,battery divider low side,to buy,
+R2,1,Resistor,220k,0805,battery divider high side,to buy,battery divider high side; R2=R3 halves Vbat into ADC range. 220k => ~9.5uA drain
+R3,1,Resistor,220k,0805,battery divider low side,to buy,battery divider low side; midpoint to GPIO21. Keep <500k or ADC reads drift
 C1,1,Capacitor,100nF,0805,MAX7219 decoupling,to buy,place close to the IC
 C2,1,Capacitor,10uF,0805,MAX7219 bulk,to buy,
 C3,1,Capacitor,100nF,0805,ESP32-C3 decoupling,to buy,
-SW1,1,Momentary switch,,through-hole,Morse key,have,active low with INPUT_PULLUP; consider external key jack
+SW1,1,Tactile switch 6x6mm,,"SW_PUSH_6mm (THT, 4-pin)",Morse key,to buy,classic 6x6 tact switch; 4 pins but only 2 nets. Pick _H5mm variant if button height matters for the case
 SW2,1,Slide switch,,SMD,power on/off,to buy,
-BZ1,1,Buzzer,,SMD or TH,sidetone — hear what you send,to buy,magnetic buzzer needs a drive transistor; piezo can be driven direct
-BT1,1,Li-ion cell,,18650 or pouch,power,to buy,capacity pending current estimate
+BZ1,1,Magnetic buzzer 12mm,,Buzzer_12x9.5RM7.6 (THT),sidetone — hear what you send,to buy,"12mm dia, 9.5mm tall, 7.6mm pin pitch. ACTIVE buzzer = fixed tone; PASSIVE needed for tone() sidetone — see docs"
+BT1,1,LiPo pouch 102050,3.7V 1000mAh,SolderWire 1x02 P3.7mm (flying leads),power,to buy,"10x20x50mm, 1000mAh = ~7h trainer / ~5h TX. Flying leads soldered to pads; use _Relief variant for strain relief"
 M1,1,TP4056 module,,module,charging + protection,to buy,get the version WITH protection IC
 J1,1,Antenna whip,433 MHz,SMA male stub,RF,have,ships with the module; screws onto the board SMA socket. Detachable — case needs an opening. Never key the radio without it or a dummy load.
 ,1,Level shifter TXS0108E or BSS138,,breakout module,3.3V to 5V for MAX7219 DIN/CLK/LOAD,conditional,only if running MAX7219 at 5V — see docs/hardware.md. Both sold as modules in BR

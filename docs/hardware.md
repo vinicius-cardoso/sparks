@@ -132,9 +132,13 @@ with a `Connector_Generic:Conn_01x0N` sized to its pin count:
 
 - **ESP32-C3 Supermini** — stock libs carry only the bare die and the WROOM
   modules, not this board. Two 8-pin headers match its layout.
-- **CC1101 module** — no symbol. 8 pins → `Conn_01x08`.
-- **TP4056** — no symbol. `Battery_Management` contains **TP4057**, which is a
-  *different part* — do not substitute it.
+- **TP4056** — stock libs contain **TP4057**, a *different part*; do not
+  substitute it. Use the local `TP4056-Breakout` library instead.
+- **CC1101 module** — socketed, not soldered. Use a generic
+  `Connector_Generic:Conn_02x04_Odd_Even` symbol with the footprint
+  `Connector_PinSocket_2.54mm:PinSocket_2x04_P2.54mm_Vertical`. No dedicated
+  symbol is kept: the board only carries the socket, so a generic connector
+  describes it accurately.
 
 ### Footprints
 

@@ -7,7 +7,6 @@ on any machine without hunting them down again.
 |---|---|---|---|
 | ESP32-C3 SuperMini | ✅ local | ✅ local | none stated |
 | TP4056 breakout | ✅ local | ⚠️ local, unverified | none stated |
-| CC1101 module | ✅ local (converted) | ❌ use stock header | MIT |
 
 ---
 
@@ -73,44 +72,13 @@ charging boards.
 
 ---
 
-## CC1101-Module
-
-| File | What it is |
-|---|---|
-| `CC1101-Module.kicad_sym` | 8-pin symbol: VCC GND MOSI SCLK MISO GDO2 GDO0 CSN |
-
-**Source:** <https://github.com/olliiiver/kicad_homeatic_minimal> (MIT), converted
-locally from the legacy KiCad 5 `.lib` format to modern `.kicad_sym`.
-
-Pin order matches the V2.0 SMA module used in this project, and matches
-`electronics/pinouts/cc1101.png`.
-
-### No footprint here — use a stock pin header
-
-The upstream footprint was **deliberately not installed**: it is a single column
-of 8 pads at **2.0 mm pitch**, which belongs to a bare Homematic-style board. The
-module Sparks uses has **8 pins in 2 rows of 4 at 2.54 mm**. Using the upstream
-footprint would produce a board the module cannot physically plug into.
-
-Use instead:
-
-```
-Connector_PinHeader_2.54mm:PinHeader_2x04_P2.54mm_Vertical
-```
-
-Assign it to the CC1101 symbol in the footprint field. Confirm the row order
-against your own module before routing — pin 1 is marked on the board.
-
----
-
 ## Licensing
 
 > [!IMPORTANT]
 > The ESP32-C3 SuperMini and TP4056 repositories carry **no licence file**, so
 > that material is under default copyright with no explicit grant to redistribute.
 > It is vendored here for personal use on this project — ordinary practice for
-> hobby KiCad libraries, but not a licence. The CC1101 symbol derives from an
-> MIT-licensed repository and is fine to redistribute with attribution.
+> hobby KiCad libraries, but not a licence.
 >
 > If Sparks is ever published as a kit or the hardware files are redistributed,
 > either obtain permission for the unlicensed parts or redraw them from the
